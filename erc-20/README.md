@@ -1,66 +1,58 @@
-## Foundry
+# WhitelistedMintableToken - Foundry Deployment Guide
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## 📌 Prerequisites
+Before you begin, ensure you have the following installed:
+- [Foundry](https://github.com/foundry-rs/foundry) (Forge & Cast)
+- Node.js & npm (for managing dependencies, if needed)
+- A funded wallet with **Base Sepolia** testnet ETH
+- An **Etherscan API key** for contract verification
 
-Foundry consists of:
-
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
+## 🔧 Installation
+### 1️⃣ Install Foundry
+Run the following command to install Foundry:
+```sh
+curl -L https://foundry.paradigm.xyz | bash
+foundryup  # Updates Foundry to the latest version
 ```
 
-### Test
-
-```shell
-$ forge test
+### 2️⃣ Clone the Repository & Install Dependencies
+```sh
+git clone https://github.com/raj210809/anthiasAssign
+cd erc-20
+forge install
 ```
 
-### Format
-
-```shell
-$ forge fmt
+### 3️⃣ Install OpenZeppelin Contracts
+To use OpenZeppelin’s standard contracts, install them with:
+```sh
+forge install OpenZeppelin/openzeppelin-contracts
 ```
 
-### Gas Snapshots
-
-```shell
-$ forge snapshot
+## 🚀 Deployment
+Before deploying, set up environment variables:
+```sh
+export PRIVATE_KEY=<your-private-key>
+export BASE_SEPOLIA_RPC_URL=<your-rpc-url>
+export ETHERSCAN_API_KEY=<your-etherscan-api-key>
 ```
 
-### Anvil
-
-```shell
-$ anvil
+### 1️⃣ Run the Deployment Script
+Execute the following command to deploy the contract to **Base Sepolia**:
+```sh
+forge script --etherscan-api-key $ETHERSCAN_API_KEY script/WhitelistedMinterToken.sol \
+    --rpc-url $BASE_SEPOLIA_RPC_URL \
+    --broadcast --private-key $PRIVATE_KEY --verify -vvvv
 ```
 
-### Deploy
+### 2️⃣ Verify Deployment
+If the deployment is successful, Foundry will output a **contract address**. You can verify it manually on [Base Sepolia Etherscan](https://sepolia.basescan.org/).
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+## 🛠 Testing
+To run tests before deploying, execute:
+```sh
+forge test -vvv
 ```
 
-### Cast
+## 📄 License
+This project is licensed under the MIT License.
 
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
