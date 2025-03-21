@@ -16,6 +16,10 @@ contract WhitelistedMintableToken is ERC20 , Ownable {
     /// @notice Event emitted when the whitelisted minter is updated
     event MinterUpdated(address indexed newMinter);
 
+    event Mint(address indexed to, uint256 amount);
+
+    event Burn(address indexed from, uint256 amount);
+
     /**
      * @dev Sets the deployer as the initial minter and owner.
      * @param name Token name
@@ -48,6 +52,7 @@ contract WhitelistedMintableToken is ERC20 , Ownable {
      */
     function mint(address to, uint256 amount) external onlyMinter {
         _mint(to, amount);
+        emit Mint(to, amount);
     }
 
     /**
@@ -56,5 +61,6 @@ contract WhitelistedMintableToken is ERC20 , Ownable {
      */
     function burn(uint256 amount) external {
         _burn(msg.sender, amount);
+        emit Burn(msg.sender, amount);
     }
 }
