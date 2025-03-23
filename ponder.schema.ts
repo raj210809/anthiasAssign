@@ -1,6 +1,30 @@
 import { onchainTable } from "ponder";
 
-export const example = onchainTable("example", (t) => ({
-  id: t.text().primaryKey(),
-  name: t.text(),
+// Table for Mint events
+export const mints = onchainTable("mints", (t) => ({
+  id: t.text().primaryKey(),  // Transaction hash as primary key
+  to: t.text(),               // Recipient of the minted tokens
+  amount: t.text(),           // Minted amount
+  blockNumber: t.integer(),   // Block number
+  timestamp: t.integer(),     // Timestamp of the block
 }));
+
+// Table for Transfer events
+export const transfers = onchainTable("transfers", (t) => ({
+  id: t.text().primaryKey(),  // Transaction hash
+  from: t.text(),             // Sender of tokens
+  to: t.text(),               // Recipient of tokens
+  amount: t.text(),           // Amount transferred
+  blockNumber: t.integer(),   // Block number
+  timestamp: t.integer(),     // Timestamp of the block
+}));
+
+// Table for Burn events
+export const burns = onchainTable("burns", (t) => ({
+  id: t.text().primaryKey(),  // Transaction hash
+  from: t.text(),             // Address burning the tokens
+  amount: t.text(),           // Amount burned
+  blockNumber: t.integer(),   // Block number
+  timestamp: t.integer(),     // Timestamp of the block
+}));
+
