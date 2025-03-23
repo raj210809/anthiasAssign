@@ -18,6 +18,7 @@ export async function aggregateBalances() {
 
   const balances: Record<string, number> = {};
   let totalSupply = 0;
+  console.log(mints)
 
   // Process mints
   mints?.forEach(({ to, amount }) => {
