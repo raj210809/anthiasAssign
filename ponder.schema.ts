@@ -1,4 +1,4 @@
-import { onchainTable } from "ponder";
+import { onchainTable, timestamp } from "ponder";
 
 // Table for Mint events
 export const mints = onchainTable("mints", (t) => ({
@@ -30,6 +30,8 @@ export const burns = onchainTable("burns", (t) => ({
 
 export const wallet = onchainTable("wallet", (t) => ({
   id : t.text().primaryKey(),
+  timestampForMint : t.bigint(),
+  timestampForBurn : t.bigint(),
   balance : t.text(),
 }));
 
