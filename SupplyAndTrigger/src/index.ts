@@ -1,11 +1,12 @@
-import { aggregateBalances } from "./aggregator";
-import {checkAlerts} from "./trigger"
-import { getHoldersAndBalances } from "./controllers/holdersAndBalances";
+import express from "express"
+import router from "./route/route"
 
-async function main() {
-//   await aggregateBalances();
-//     await checkAlerts();
-    await getHoldersAndBalances();
-}
+const app = express()
+const PORT = 3000
 
-main().catch(console.error);
+app.use(express.json())
+app.use("/api/v1" , router)
+
+app.listen(PORT , () => {
+    console.log(`Server is running on port ${PORT}`)
+})
