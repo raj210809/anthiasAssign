@@ -28,3 +28,12 @@ export const burns = onchainTable("burns", (t) => ({
   timestamp: t.integer(),     // Timestamp of the block
 }));
 
+export const wallet = onchainTable("wallet", (t) => ({
+  id : t.text().primaryKey(),
+  balance : t.text(),
+}));
+
+export const totalSupply = onchainTable("totalSupply", (t) => ({
+  id : t.text().primaryKey(),
+  totalSupply : t.text(),
+}));
