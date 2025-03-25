@@ -3,7 +3,6 @@ import {gql , request} from "graphql-request"
 
 export async function getBalance (req: Request , res: Response) {
     const {id} = req.query
-    console.log(typeof(id))
     try {
         const query = gql`
             query {
