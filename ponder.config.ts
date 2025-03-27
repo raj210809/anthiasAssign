@@ -7,14 +7,14 @@ export default createConfig({
   networks: {
     baseSepolia: {
       chainId: 84532, // Base Sepolia Chain ID
-      transport: http(process.env.BASE_SEPOLIA_RPC_URL), // Add your RPC URL in .env
+      transport: http(process.env.PONDER_RPC_URL_1),
     },
   },
   contracts: {
     WhitelistedMintableToken: {
       network: "baseSepolia",
       abi: WhitelistedMintableTokenAbi as Abi,
-      address: "0xbA0D56FC7544ED41D385F5b23471C6E5c05624a2",
+      address: process.env.TOKEN as any, //0xbA0D56FC7544ED41D385F5b23471C6E5c05624a2
       startBlock: 23432562,
     },
   },
