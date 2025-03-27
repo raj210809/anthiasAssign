@@ -22,3 +22,47 @@ Server is running on port 3000
 
 [INFO] 04:28:54 ts-node-dev ver. 2.0.0 (using ts-node ver. 10.9.2, typescript ver. 5.7.3)
 Server is running on port 3000
+
+> supplyandtrigger@1.0.0 dev
+> ts-node-dev src/index.ts
+
+[INFO] 19:43:58 ts-node-dev ver. 2.0.0 (using ts-node ver. 10.9.2, typescript ver. 5.7.3)
+Server is running on port 3000
+
+> supplyandtrigger@1.0.0 dev
+> ts-node-dev src/index.ts
+
+[INFO] 19:48:44 ts-node-dev ver. 2.0.0 (using ts-node ver. 10.9.2, typescript ver. 5.7.3)
+Server is running on port 3000
+
+> supplyandtrigger@1.0.0 dev
+> ts-node-dev src/index.ts
+
+[INFO] 19:55:18 ts-node-dev ver. 2.0.0 (using ts-node ver. 10.9.2, typescript ver. 5.7.3)
+Server is running on port 3000
+
+> supplyandtrigger@1.0.0 dev
+> ts-node-dev src/index.ts
+
+[INFO] 19:59:53 ts-node-dev ver. 2.0.0 (using ts-node ver. 10.9.2, typescript ver. 5.7.3)
+Server is running on port 3000
+
+> supplyandtrigger@1.0.0 dev
+> ts-node-dev src/index.ts
+
+[INFO] 20:01:53 ts-node-dev ver. 2.0.0 (using ts-node ver. 10.9.2, typescript ver. 5.7.3)
+Server is running on port 3000
+
+> supplyandtrigger@1.0.0 dev
+> ts-node-dev src/index.ts
+
+[INFO] 12:37:32 ts-node-dev ver. 2.0.0 (using ts-node ver. 10.9.2, typescript ver. 5.7.3)
+Server is running on port 3000
+[]
+[
+  {
+    id: '0xa0579ab852018324e290d0c09dbba1fad4e147032be953e64363d1dae5cc7ca0',
+    address: '0x0d8B290Fd34626f3A51958fa3f12d633A695eaCF',
+    amount: '1000000000000000000'
+  }
+]

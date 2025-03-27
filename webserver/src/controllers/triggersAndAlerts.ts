@@ -11,6 +11,18 @@ export async function getTriggersAndAlerts(req: Request, res: Response) {
           return res.status(500).json({ message: "Error fetching wallet data", error: walletError.message });
       }
 
+      const {data : alerts, error : alertsError} = await supabase.from("alerts").select("*");
+      if (alertsError) {  
+            console.error("Error fetching alerts:", alertsError.message);
+        }
+        if (alerts &&
+            alerts.length > 0 &&
+            alertsError === null){
+                alerts?.forEach((alert) => {
+                    triggersAndAlerts.push(alert);
+                });
+            }
+
       const { data: totalSupplyData, error: totalSupplyError } = await supabase.from("totalSupply").select("*");
       let fullSupply: string = "0";
 

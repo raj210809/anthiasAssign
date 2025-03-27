@@ -11,30 +11,27 @@ TOKEN_ADDRESS=$1
 PONDER_DIR="./ponderServer"
 WEB_DIR="./webserver"
 
-# Command to run both servers
-PONDER_CMD="TOKEN=$TOKEN_ADDRESS npm run dev"
 WEB_CMD="npm run dev"
 
-# Log files for debugging
-PONDER_LOG="ponder.log"
 WEB_LOG="webserver.log"
 
-# Health check interval (seconds)
 CHECK_INTERVAL=30
 
-# Start both servers
 start_ponder() {
-    echo "Starting PonderServer..."
+    echo "Starting PonderServer with TOKEN_ADDRESS=$TOKEN_ADDRESS"
     cd "$PONDER_DIR" || exit
-    TOKEN="$TOKEN_ADDRESS" npx ponder dev >> "../$PONDER_LOG" 2>&1 &
+
+    TOKEN="$TOKEN_ADDRESS" npx ponder dev > /dev/null 2>&1 &
     PONDER_PID=$!
+    
     cd - > /dev/null
 }
 
+# Start WebServer and log to file
 start_web() {
     echo "Starting WebServer..."
     cd "$WEB_DIR" || exit
-    $WEB_CMD >> "../$WEB_LOG" 2>&1 &
+    $WEB_CMD >> "../$WEB_LOG" 2>&1 &  # Log WebServer output
     WEB_PID=$!
     cd - > /dev/null
 }
@@ -48,13 +45,13 @@ while true; do
     sleep $CHECK_INTERVAL
 
     # Check if PonderServer is running
-    if ! ps -p $PONDER_PID > /dev/null; then
+    if ! kill -0 $PONDER_PID 2>/dev/null; then
         echo "PonderServer crashed! Restarting..."
         start_ponder
     fi
 
     # Check if WebServer is running
-    if ! ps -p $WEB_PID > /dev/null; then
+    if ! kill -0 $WEB_PID 2>/dev/null; then
         echo "WebServer crashed! Restarting..."
         start_web
     fi

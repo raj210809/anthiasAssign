@@ -66,14 +66,14 @@ forge script --etherscan-api-key $ETHERSCAN_API_KEY script/WhitelistedMinterToke
 
 ### 2. Ponder Server Setup
 ```bash
-cd ponder-server
+cd ponderServer
 npm install
 TOKEN=YOUR_TOKEN_ADDRESS npx ponder dev
 ```
 
 ### 3. Web Server Setup
 ```bash
-cd web-server
+cd webserver
 npm install
 npm run dev
 ```
